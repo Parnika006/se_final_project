@@ -1,0 +1,78 @@
+.menu__bar {
+  width: 320px;
+  height: 568px;
+  background-color: rgba(26, 27, 34, 0.5);
+}
+
+.menu__bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  border-bottom: rgba(196, 196, 196, 0.01);
+  box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+  background-color: rgba(26, 27, 34, 1);
+}
+
+.menu__bar-heading {
+  font-family: "Roboto-slab", "inter", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  align-self: center;
+  margin-left: 16px;
+}
+
+.menu__bar-close-button {
+  background-image: url(../../assets/close.svg);
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.menu__bar-buttons {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  gap: 22px;
+  padding-top: 16px;
+  padding-bottom: 24px;
+  background-color: rgba(26, 27, 34, 1);
+}
+
+.menu_bar-home-button {
+  border: none;
+  background-color: transparent;
+  font-family: "Roboto-medium", "inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 56px;
+  color: rgba(255, 255, 255, 1);
+  text-align: start;
+  margin-left: 16px;
+  padding: 0;
+  width: 288px;
+  height: 56px;
+}
+
+.menu_bar-login-button {
+  font-family: "Roboto-medium", "inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 100px;
+  width: 288px;
+  height: 56px;
+  margin-left: 16px;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
