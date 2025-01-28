@@ -84,14 +84,12 @@
     margin: 20px 0 0 0;
     padding-left: 16px;
     width: 200px;
-    gap: 0px;
+    gap: 20px;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 0px;
   }
 
   .footer__button {
-    line-height: 48px;
     text-align: start;
     margin: 0;
     padding: 0;
