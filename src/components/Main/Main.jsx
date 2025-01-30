@@ -2,10 +2,23 @@ import "./Main.css";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 
-function Main() {
+function Main({
+  handleLoginClick,
+  handleMenuBarClick,
+  isOpen,
+  isLoggedIn,
+  handleSignOut,
+}) {
   return (
     <div className="search__page">
-      <Header />
+      <Header
+        handleLoginClick={handleLoginClick}
+        handleMenuBarClick={handleMenuBarClick}
+        isOpen={isOpen}
+        isLoggedIn={isLoggedIn}
+        handleSignOut={handleSignOut}
+        changeCss={false}
+      />
 
       <h1 className="search__page__heading">
         What&apos;s going on in the world?

@@ -2,6 +2,13 @@
   width: 320px;
   height: 568px;
   background-color: rgba(26, 27, 34, 0.5);
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+}
+
+.menu__bar_opened {
+  visibility: visible;
 }
 
 .menu__bar-header {
@@ -15,7 +22,7 @@
 }
 
 .menu__bar-heading {
-  font-family: "Roboto-slab", "inter", sans-serif;
+  font-family: "Roboto-slab", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -49,7 +56,7 @@
 .menu_bar-home-button {
   border: none;
   background-color: transparent;
-  font-family: "Roboto-medium", "inter", sans-serif;
+  font-family: "Roboto-medium", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 56px;
@@ -59,10 +66,11 @@
   padding: 0;
   width: 288px;
   height: 56px;
+  cursor: pointer;
 }
 
 .menu_bar-login-button {
-  font-family: "Roboto-medium", "inter", sans-serif;
+  font-family: "Roboto-medium", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;

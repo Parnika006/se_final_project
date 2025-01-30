@@ -1,0 +1,195 @@
+.header__buttons {
+  display: flex;
+  gap: 42px;
+  margin-right: 104px;
+  align-items: center;
+}
+
+.header__home-button {
+  font-family: "Roboto-medium", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  display: block;
+  text-decoration: none;
+  position: relative;
+}
+
+.header__home-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -27px;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+
+.header__login-button {
+  font-family: "Roboto-medium", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 100px;
+  width: 176px;
+  height: 48px;
+  display: block;
+  padding: 0;
+}
+
+.header__button-menu {
+  display: none;
+  background-image: url(../../assets/menu.svg);
+}
+
+.header__saved-article-home_button {
+  background: rgba(255, 255, 255, 1);
+  font-family: "Roboto-medium", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  display: block;
+  text-decoration: none;
+  position: relative;
+  color: rgba(26, 27, 34, 1);
+}
+
+.header__saved-articles-button {
+  font-family: "Roboto-medium", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  width: 114px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: rgba(182, 188, 191, 1);
+  cursor: pointer;
+}
+
+.header__saved-articles-button-custom {
+  position: relative;
+  color: black;
+}
+
+.header__saved-articles-button-custom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -27px;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(26, 27, 34, 1);
+}
+
+.header__username-button {
+  width: 112px;
+  height: 48px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 100px;
+  padding: 0 15px 0 19px;
+  cursor: pointer;
+}
+
+.header__username-button-custom {
+  border-color: black;
+}
+
+.header__username {
+  font-family: "Roboto-medium", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.header__username-custom {
+  color: black;
+}
+
+.header__sign-out-button {
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  .header__buttons {
+    margin-right: 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__buttons {
+    margin-right: 40px;
+    gap: 16px;
+  }
+
+  .header__login-button {
+    width: 152px;
+    font-size: 16px;
+    height: 40px;
+  }
+
+  .header__home-button {
+    font-size: 16px;
+  }
+
+  .header__home-button::after {
+    bottom: -20px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .header__login-button {
+    width: 100px;
+  }
+  .header__buttons {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header__buttons {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header__buttons {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__buttons {
+    display: none;
+  }
+
+  .header__button-menu {
+    display: block;
+    margin: 16px 16px 16px 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+}

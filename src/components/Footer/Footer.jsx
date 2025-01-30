@@ -1,28 +1,48 @@
 import "./Footer.css";
 import github from "../../assets/github.png";
-import facebook from "../../assets/facebook.png";
+import linkedin from "../../assets/linkedin.png";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <div className="footer">
       <p className="footer__year"> © 2024 Supersite, Powered by News API </p>
       <div className="footer__content">
-        <div className="footer__nav-buttons">
-          <button type="text" className="footer__button">
-            Home
-          </button>
-          <button type="text" className="footer__button">
+        <div className="footer__nav-links">
+          <Link to="/">
+            <button className="footer__link"> Home</button>
+          </Link>
+
+          <a
+            href="https://tripleten.com/"
+            className="footer__link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {" "}
             Triple Ten
-          </button>
+          </a>
         </div>
-        <div className="footer__logo-button">
-          <img className="footer__github" src={github} alt="github logo" />
-          <img
-            className="footer__facebook"
-            src={facebook}
-            alt="facebook logo"
-          />
+        <div className="footer__logo-link">
+          <a
+            href="https://github.com/Parnika006"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img className="footer__github" src={github} alt="github logo" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/parnikasingh006/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="footer__linkedin"
+              src={linkedin}
+              alt="linkedin logo"
+            />
+          </a>
         </div>
       </div>
     </div>

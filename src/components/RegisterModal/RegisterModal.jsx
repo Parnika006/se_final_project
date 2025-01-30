@@ -1,8 +1,27 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal() {
+function RegisterModal({
+  isOpen,
+  closeActiveModal,
+  handleLoginClick,
+  handleRegistrationComplete,
+}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    closeActiveModal();
+    handleRegistrationComplete();
+  };
+
   return (
-    <ModalWithForm title="Sign up" buttonText="Sign up" buttonText2="Sign in">
+    <ModalWithForm
+      title="Sign up"
+      buttonText="Sign up"
+      buttonText2="Sign in"
+      closeActiveModal={closeActiveModal}
+      isOpen={isOpen}
+      onButtonClick={handleLoginClick}
+      handleSubmit={handleSubmit}
+    >
       <label htmlFor="email" className="modal__label">
         Email
         <input

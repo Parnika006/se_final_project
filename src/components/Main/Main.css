@@ -12,17 +12,17 @@
 }
 
 .search__page__heading {
-  font-family: "Roboto-slab-regular", "inter", sans-serif;
+  font-family: "Roboto-slab-regular", sans-serif;
   font-weight: 400;
   font-size: 60px;
   line-height: 64px;
-  color: rgba(255, 255, 255, 1);
+  color: #ffffff;
   margin: 80px auto 32px;
   max-width: 608px;
 }
 
 .search__page__note {
-  font-family: "Roboto-medium", "inter", sans-serif;
+  font-family: "Roboto-medium", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -42,6 +42,42 @@
   .search__page__note {
     margin: 0px 0px 48px 160px;
     max-width: 452px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .search__page__heading {
+    margin: 38px 0px 16px 100px;
+  }
+  .search__page__note {
+    margin: 0px 0px 48px 100px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .search__page {
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 481px) {
+  .search__page {
+    padding-right: 0;
+  }
+  .search__page__heading {
+    margin: 38px 0px 16px 60px;
+  }
+  .search__page__note {
+    margin: 0px 0px 48px 60px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .search__page__heading {
+    margin: 38px 0px 16px 20px;
+  }
+  .search__page__note {
+    margin: 0px 0px 48px 20px;
   }
 }
 

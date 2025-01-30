@@ -1,8 +1,27 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal() {
+function LoginModal({
+  isOpen,
+  closeActiveModal,
+  handleSignUpClick,
+  handleLogin,
+}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    closeActiveModal();
+    handleLogin();
+  };
+
   return (
-    <ModalWithForm title="Sign in" buttonText="Sign in" buttonText2="Sign up">
+    <ModalWithForm
+      title="Sign in"
+      buttonText="Sign in"
+      buttonText2="Sign up"
+      closeActiveModal={closeActiveModal}
+      isOpen={isOpen}
+      onButtonClick={handleSignUpClick}
+      handleSubmit={handleSubmit}
+    >
       <label htmlFor="email" className="modal__label">
         Email
         <input
