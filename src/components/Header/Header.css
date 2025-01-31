@@ -29,13 +29,7 @@
   color: rgba(26, 27, 34, 1);
 }
 
-@media screen and (max-width: 960px) {
-  .header_logo {
-    margin-left: 60px;
-  }
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1439px) and (min-width: 768px) {
   .header {
     height: 66px;
   }
@@ -45,19 +39,12 @@
   }
 }
 
-@media screen and (max-width: 600px) {
-  .header__logo {
-    margin-left: 20px;
-  }
-}
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .header {
     height: 56px;
-    max-width: 320px;
   }
 
-  .header_logo {
+  .header__logo {
     margin-left: 16px;
   }
 }

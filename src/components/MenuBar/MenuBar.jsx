@@ -1,7 +1,13 @@
 import "./MenuBar.css";
 import { Link } from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
-function MenuBar({ isOpen, handleLoginClick, closeActiveModal }) {
+function MenuBar({
+  isOpen,
+  handleLoginClick,
+  closeActiveModal,
+  handleSignOut,
+}) {
   return (
     <div className={` menu__bar ${isOpen && "menu__bar_opened"}`}>
       <div className="menu__bar-content">
@@ -13,21 +19,12 @@ function MenuBar({ isOpen, handleLoginClick, closeActiveModal }) {
             onClick={closeActiveModal}
           ></button>
         </div>
-        <div className="menu__bar-buttons">
-          <Link to="/">
-            <button className="menu_bar-home-button" onClick={closeActiveModal}>
-              Home
-            </button>
-          </Link>
-
-          <button
-            type="text"
-            className="menu_bar-login-button"
-            onClick={handleLoginClick}
-          >
-            Sign In
-          </button>
-        </div>
+        <Navigation
+          menuBarOpen={true}
+          handleLoginClick={handleLoginClick}
+          handleSignOut={handleSignOut}
+          isOpen={isOpen}
+        />
       </div>
     </div>
   );

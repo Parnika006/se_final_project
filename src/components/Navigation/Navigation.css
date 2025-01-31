@@ -1,11 +1,18 @@
-.header__buttons {
+.nav {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 0;
+}
+
+.nav__buttons {
   display: flex;
   gap: 42px;
   margin-right: 104px;
   align-items: center;
 }
 
-.header__home-button {
+.nav__home-button {
   font-family: "Roboto-medium", sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -20,7 +27,7 @@
   position: relative;
 }
 
-.header__home-button::after {
+.nav__home-button::after {
   content: "";
   position: absolute;
   left: 0;
@@ -30,7 +37,7 @@
   background-color: white;
 }
 
-.header__login-button {
+.nav__login-button {
   font-family: "Roboto-medium", sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -46,12 +53,12 @@
   padding: 0;
 }
 
-.header__button-menu {
+.nav__button-menu {
   display: none;
   background-image: url(../../assets/menu.svg);
 }
 
-.header__saved-article-home_button {
+.nav__saved-article-home_button {
   background: rgba(255, 255, 255, 1);
   font-family: "Roboto-medium", sans-serif;
   font-weight: 500;
@@ -67,7 +74,7 @@
   color: rgba(26, 27, 34, 1);
 }
 
-.header__saved-articles-button {
+.nav__saved-articles-button {
   font-family: "Roboto-medium", sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -81,12 +88,12 @@
   cursor: pointer;
 }
 
-.header__saved-articles-button-custom {
+.nav__saved-articles-button-custom {
   position: relative;
   color: black;
 }
 
-.header__saved-articles-button-custom::after {
+.nav__saved-articles-button-custom::after {
   content: "";
   position: absolute;
   left: 0;
@@ -96,7 +103,7 @@
   background-color: rgba(26, 27, 34, 1);
 }
 
-.header__username-button {
+.nav__username-button {
   width: 112px;
   height: 48px;
   display: flex;
@@ -109,11 +116,11 @@
   cursor: pointer;
 }
 
-.header__username-button-custom {
+.nav__username-button-custom {
   border-color: black;
 }
 
-.header__username {
+.nav__username {
   font-family: "Roboto-medium", sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -121,75 +128,71 @@
   color: rgba(255, 255, 255, 1);
 }
 
-.header__username-custom {
+.nav__username-custom {
   color: black;
 }
 
-.header__sign-out-button {
+.nav__sign-out-button {
   width: 24px;
   height: 24px;
 }
 
-@media screen and (max-width: 960px) {
-  .header__buttons {
-    margin-right: 60px;
-  }
+.nav__menu-bar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background-color: black;
+  width: 320px;
+  max-width: 100%;
+  padding: 16px 16px 24px 16px;
+  align-items: center;
 }
 
-@media screen and (max-width: 768px) {
-  .header__buttons {
+@media screen and (max-width: 1439px) and (min-width: 768px) {
+  .nav__buttons {
     margin-right: 40px;
     gap: 16px;
   }
 
-  .header__login-button {
+  .nav__login-button {
     width: 152px;
     font-size: 16px;
     height: 40px;
   }
 
-  .header__home-button {
+  .nav__home-button {
     font-size: 16px;
   }
 
-  .header__home-button::after {
+  .nav__home-button::after {
     bottom: -20px;
   }
-}
 
-@media screen and (max-width: 660px) {
-  .header__login-button {
-    width: 100px;
-  }
-  .header__buttons {
-    margin-right: 10px;
+  .nav__saved-articles-button-custom::after {
+    bottom: -21px;
   }
 }
 
-@media screen and (max-width: 400px) {
-  .header__buttons {
-    margin-right: 20px;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .header__buttons {
-    margin-right: 10px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .header__buttons {
-    display: none;
-  }
-
-  .header__button-menu {
+@media screen and (max-width: 767px) {
+  .nav__button-menu {
     display: block;
-    margin: 16px 16px 16px 0;
+    margin-left: auto;
+    margin-right: 16px;
+    margin-top: 16px;
+    padding: 0;
     width: 24px;
     height: 24px;
     border: none;
     cursor: pointer;
     background-color: transparent;
+  }
+
+  .nav__saved-articles-button-custom::after {
+    width: 0;
+    height: 0;
+  }
+
+  .nav__buttons {
+    display: none;
   }
 }

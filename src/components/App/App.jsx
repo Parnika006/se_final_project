@@ -25,6 +25,12 @@ function App() {
   };
 
   useEffect(() => {
+    if (localStorage.getItem("jwt")) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  useEffect(() => {
     if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
 
     const handleEscClose = (e) => {
@@ -59,11 +65,14 @@ function App() {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
+    // simulate jwt token for login refresh
+    localStorage.setItem("jwt", "test");
     console.log("user is logged in", isLoggedIn);
   };
 
   const handleSignOut = () => {
     setIsLoggedIn(false);
+    localStorage.clear();
     navigate("/");
     console.log("user is logged out", isLoggedIn);
   };
@@ -128,6 +137,7 @@ function App() {
           isOpen={activeModal === "MenuBar"}
           handleLoginClick={handleLoginClick}
           closeActiveModal={closeActiveModal}
+          handleSignOut={handleSignOut}
         />
       )}
     </div>

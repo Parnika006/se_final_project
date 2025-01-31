@@ -1,8 +1,8 @@
 .search__form {
-  width: 608px;
+  width: calc(100% - 832px);
   position: relative;
   padding: 0;
-  margin: 0 auto 80px;
+  margin: 0 416px 80px;
   box-sizing: border-box;
 }
 
@@ -12,7 +12,8 @@
   font-size: 16px;
   line-height: 22px;
   color: rgba(182, 188, 191, 1);
-  width: 608px;
+  width: 100%;
+  margin: 0 auto;
   height: 64px;
   border: 1px solid rgba(209, 210, 214, 1);
   border-radius: 100px;
@@ -59,90 +60,51 @@
   padding: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1439px) and (min-width: 768px) {
   .search__form {
-    margin: 0 0 48px 160px;
-    max-width: 448px;
+    width: calc(100%-316px);
+    margin: 0 156px 48px 160px;
     height: 56px;
+    min-width: 452px;
   }
 
   .search__form__input {
+    width: calc(100%-316px);
     height: 56px;
-    max-width: 448px;
+    min-width: 452px;
   }
 
   .search__form__submit-button {
-    width: 160px;
     height: 56px;
+    width: 160px;
   }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 767px) {
   .search__form {
-    margin: 0 0 48px 100px;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .search__form {
-    width: 400px;
-    margin: 0 0 48px 100px;
-  }
-
-  .search__form__input {
-    width: 400px;
-  }
-}
-
-@media screen and (max-width: 481px) {
-  .search__form {
-    width: 350px;
-    margin: 0 0 48px 60px;
-  }
-
-  .search__form__input {
-    width: 350px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .search__form {
-    margin: 0 0 48px 20px;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .search__form {
-    width: 300px;
-  }
-
-  .search__form__input {
-    width: 300px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .search__form {
-    width: 288px;
+    width: calc(100% - 32px);
+    margin: 0px 16px 32px 16px;
     height: 128px;
-    margin: 0 auto 32px;
+    position: relative;
+    align-items: center;
+    min-width: 288px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    position: relative;
-    align-items: center;
   }
 
   .search__form__input {
-    width: 288px;
     height: 56px;
     padding: 0 0 0 16px;
+    min-width: 288px;
+    width: 100%;
   }
 
   .search__form__submit-button {
-    width: 288px;
     height: 56px;
     box-shadow: none;
     position: static;
+    width: (100% - 32px);
+    min-width: 288px;
   }
 }

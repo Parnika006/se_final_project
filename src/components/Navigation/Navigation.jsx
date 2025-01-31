@@ -11,6 +11,7 @@ function Navigation({
   isLoggedIn,
   handleSignOut,
   changeCss,
+  menuBarOpen,
 }) {
   const navigate = useNavigate();
 
@@ -19,12 +20,14 @@ function Navigation({
   };
 
   return (
-    <div className="Nav">
-      <div className="header__buttons">
+    <div className="nav">
+      <div
+        className={`nav__buttons ${menuBarOpen ? "nav__menu-bar-buttons" : ""}`}
+      >
         <Link
           to="/"
-          className={`header__home-button ${
-            changeCss ? "header__saved-article-home_button" : ""
+          className={`nav__home-button ${
+            changeCss ? "nav__saved-article-home_button" : ""
           }`}
         >
           Home
@@ -32,7 +35,7 @@ function Navigation({
         {!isLoggedIn && (
           <button
             type="text"
-            className="header__login-button"
+            className="nav__login-button"
             onClick={handleLoginClick}
           >
             Sign in
@@ -41,8 +44,8 @@ function Navigation({
         {isLoggedIn && (
           <button
             type="text"
-            className={`header__saved-articles-button ${
-              changeCss ? "header__saved-articles-button-custom" : ""
+            className={`nav__saved-articles-button ${
+              changeCss ? "nav__saved-articles-button-custom" : ""
             }`}
             onClick={handleSavedArticleButtonClick}
           >
@@ -53,14 +56,14 @@ function Navigation({
         {isLoggedIn && (
           <button
             type="text"
-            className={`header__username-button ${
-              changeCss ? "header__username-button-custom" : ""
+            className={`nav__username-button ${
+              changeCss ? "nav__username-button-custom" : ""
             }`}
             onClick={handleSignOut}
           >
             <span
-              className={`header__username ${
-                changeCss ? "header__username-custom" : ""
+              className={`nav__username ${
+                changeCss ? "nav__username-custom" : ""
               }`}
             >
               Elise
@@ -68,7 +71,7 @@ function Navigation({
             <img
               src={changeCss ? logout_black : logout}
               alt="logout button"
-              className="header__sign-out-button"
+              className="nav__sign-out-button"
             />
           </button>
         )}
@@ -77,7 +80,7 @@ function Navigation({
       {!isOpen && (
         <button
           type="button"
-          className="header__button-menu"
+          className="nav__button-menu"
           onClick={handleMenuBarClick}
         ></button>
       )}
