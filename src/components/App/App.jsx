@@ -149,7 +149,7 @@ function App() {
     navigate("/");
     setSavedArticles({});
     setSearchQuery("");
-    window.location.reload();
+    window.location.reload(); // to reset the value of inputValue in the search form
     console.log("user is logged out", isLoggedIn);
   };
 
