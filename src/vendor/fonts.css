@@ -48,8 +48,8 @@
 
 @font-face {
   font-family: "inter-regular";
-  src: url("./fonts/inter-400.woff2") format("woff2"),
-    url("./fonts/inter-400.woff") format("woff");
+  src: url("./fonts/inter-400-regular.woff2") format("woff2"),
+    url("./fonts/inter-400-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }

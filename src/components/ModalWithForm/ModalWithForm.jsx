@@ -9,6 +9,7 @@ function ModalWithForm({
   isOpen,
   onButtonClick,
   handleSubmit,
+  buttonActive,
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
@@ -25,7 +26,9 @@ function ModalWithForm({
             {buttonText && (
               <button
                 type="submit"
-                className="modal__submit"
+                className={`modal__submit ${
+                  buttonActive && "modal__submit--active"
+                }`}
                 onClick={handleSubmit}
               >
                 {buttonText}

@@ -2,8 +2,9 @@ import "./Preloader.css";
 
 function Preloader() {
   return (
-    <div className="circle-preloader">
-      <p>Searching for news</p>
+    <div className="preloader">
+      <div className="circle-preloader"></div>
+      <p className="preloader__text">Searching for news...</p>
     </div>
   );
 }

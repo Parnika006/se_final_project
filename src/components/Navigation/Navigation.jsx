@@ -21,14 +21,11 @@ function Navigation({
 
   return (
     <div className="nav">
-      <div
-        className={`nav__buttons ${menuBarOpen ? "nav__menu-bar-buttons" : ""}`}
-      >
+      <div className={` ${menuBarOpen ? "nav__menu-bar" : "nav__buttons"}`}>
         <Link
           to="/"
-          className={`nav__home-button ${
-            changeCss ? "nav__saved-article-home_button" : ""
-          }`}
+          className={`nav__home-button
+            ${changeCss ? "nav__home-button--saved" : ""}`}
         >
           Home
         </Link>
@@ -45,7 +42,7 @@ function Navigation({
           <button
             type="text"
             className={`nav__saved-articles-button ${
-              changeCss ? "nav__saved-articles-button-custom" : ""
+              changeCss ? "nav__saved-articles-button--custom" : ""
             }`}
             onClick={handleSavedArticleButtonClick}
           >
@@ -57,13 +54,13 @@ function Navigation({
           <button
             type="text"
             className={`nav__username-button ${
-              changeCss ? "nav__username-button-custom" : ""
+              changeCss ? "nav__username-button--custom" : ""
             }`}
             onClick={handleSignOut}
           >
             <span
               className={`nav__username ${
-                changeCss ? "nav__username-custom" : ""
+                changeCss ? "nav__username--custom" : ""
               }`}
             >
               Elise
@@ -80,7 +77,9 @@ function Navigation({
       {!isOpen && (
         <button
           type="button"
-          className="nav__button-menu"
+          className={`nav__button-menu ${
+            changeCss ? "nav__button-menu--custom" : ""
+          }`}
           onClick={handleMenuBarClick}
         ></button>
       )}

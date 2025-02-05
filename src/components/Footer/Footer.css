@@ -41,18 +41,18 @@
   text-decoration: none;
 }
 
-.footer__logo-link {
+.footer__social-link {
   display: flex;
   gap: 24px;
 }
 
-.footer__github {
+.footer__social-icon-github {
   height: 24px;
   width: 24px;
   cursor: pointer;
 }
 
-.footer__linkedin {
+.footer__social-icon-linkedin {
   height: 24px;
   width: 24px;
   cursor: pointer;

@@ -8,6 +8,9 @@ function Main({
   isOpen,
   isLoggedIn,
   handleSignOut,
+  setSearchQuery,
+  setVisibleCount,
+  handleSearch,
 }) {
   return (
     <div className="search__page">
@@ -19,16 +22,19 @@ function Main({
         handleSignOut={handleSignOut}
         changeCss={false}
       />
+      <div className="search__content">
+        <h1 className="search__heading">What&apos;s going on in the world?</h1>
+        <p className="search__note">
+          Find the latest news on any topic and save them in your personal
+          account.
+        </p>
+      </div>
 
-      <h1 className="search__page__heading">
-        What&apos;s going on in the world?
-      </h1>
-      <p className="search__page__note">
-        Find the latest news on any topic and save them in your personal
-        account.
-      </p>
-
-      <SearchForm />
+      <SearchForm
+        setSearchQuery={setSearchQuery}
+        setVisibleCount={setVisibleCount}
+        handleSearch={handleSearch}
+      />
     </div>
   );
 }

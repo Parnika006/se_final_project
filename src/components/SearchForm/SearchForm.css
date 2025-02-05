@@ -63,15 +63,14 @@
 @media screen and (max-width: 1439px) and (min-width: 768px) {
   .search__form {
     width: calc(100%-316px);
-    margin: 0 156px 48px 160px;
+    margin: 0 auto 48px auto;
     height: 56px;
-    min-width: 452px;
+    width: 452px;
   }
 
   .search__form__input {
-    width: calc(100%-316px);
     height: 56px;
-    min-width: 452px;
+    width: 452px;
   }
 
   .search__form__submit-button {
@@ -88,6 +87,7 @@
     position: relative;
     align-items: center;
     min-width: 288px;
+
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -97,6 +97,7 @@
     height: 56px;
     padding: 0 0 0 16px;
     min-width: 288px;
+    max-width: 400px;
     width: 100%;
   }
 

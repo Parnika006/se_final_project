@@ -1,19 +1,21 @@
 import "./SearchForm.css";
 import { useState } from "react";
 
-function SearchForm() {
+function SearchForm({ setSearchQuery, setVisibleCount, handleSearch }) {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setVisibleCount(3);
     if (!inputValue) {
       setError("Please enter a keyword");
       return;
     }
 
     setError(""); /*  Clear error if input is valid */
+    setSearchQuery(inputValue);
+    handleSearch(inputValue);
   };
 
   const handleInputChange = (e) => {

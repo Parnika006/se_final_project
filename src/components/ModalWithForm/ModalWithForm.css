@@ -9,6 +9,7 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 9;
+  box-sizing: border-box;
 }
 
 .modal_opened {
@@ -89,10 +90,12 @@
   background-color: rgba(230, 232, 235, 1);
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
-.modal__submit-active {
+.modal__submit--active {
   background-color: rgba(47, 113, 229, 1);
+  color: rgba(255, 255, 255, 1);
 }
 
 .modal__button {
@@ -138,20 +141,24 @@
   text-align: left;
   color: rgba(0, 0, 0, 1);
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, 20%);
+
   padding: 0;
   width: 100%;
   outline: none;
+  margin-top: 9px;
 }
 
-@media screen and (max-width: 767px) {
-  .modal {
-    top: 140px;
-  }
+.modal__input:focus {
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
 
+@media screen and (max-width: 620px) {
   .modal__content {
     max-width: 320px;
-    height: 560px;
+    padding-bottom: 200px;
+    position: absolute;
+    top: 56px;
   }
 
   .modal__title {

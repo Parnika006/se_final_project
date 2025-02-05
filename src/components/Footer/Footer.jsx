@@ -23,13 +23,17 @@ function Footer() {
             Triple Ten
           </a>
         </div>
-        <div className="footer__logo-link">
+        <div className="footer__social-link">
           <a
             href="https://github.com/Parnika006"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img className="footer__github" src={github} alt="github logo" />
+            <img
+              className="footer__social-icon-github"
+              src={github}
+              alt="github logo"
+            />
           </a>
 
           <a
@@ -38,7 +42,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <img
-              className="footer__linkedin"
+              className="footer__social-icon-linkedin"
               src={linkedin}
               alt="linkedin logo"
             />

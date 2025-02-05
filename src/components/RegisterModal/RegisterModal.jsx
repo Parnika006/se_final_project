@@ -1,14 +1,38 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useState } from "react";
 
 function RegisterModal({
   isOpen,
   closeActiveModal,
   handleLoginClick,
+  handleRegistration,
   handleRegistrationComplete,
 }) {
+  const [email, setEmail] = useState({ text: "", isValid: false });
+  function handleEmail(e) {
+    setEmail({ isValid: e.target.validity.valid, text: e.target.value });
+  }
+
+  const [password, setPassword] = useState({ text: "", isValid: false });
+  function handlePassword(e) {
+    setPassword({ isValid: e.target.validity.valid, text: e.target.value });
+  }
+
+  const [name, setName] = useState({ text: "", isValid: false });
+  function handleName(e) {
+    setName({ isValid: e.target.validity.valid, text: e.target.value });
+  }
+
+  const buttonActive =
+    email.isValid && password.isValid && name.isValid ? true : false;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    closeActiveModal();
+    handleRegistration({
+      email: email.text,
+      password: password.text,
+      name: name.text,
+    });
     handleRegistrationComplete();
   };
 
@@ -21,6 +45,7 @@ function RegisterModal({
       isOpen={isOpen}
       onButtonClick={handleLoginClick}
       handleSubmit={handleSubmit}
+      buttonActive={buttonActive}
     >
       <label htmlFor="email" className="modal__label">
         Email
@@ -28,6 +53,8 @@ function RegisterModal({
           type="email"
           className="modal__input"
           id="email"
+          value={email.text}
+          onChange={handleEmail}
           placeholder="Enter email"
           minLength="1"
           maxLength="30"
@@ -40,6 +67,8 @@ function RegisterModal({
           type="password"
           className="modal__input"
           id="password"
+          value={password.text}
+          onChange={handlePassword}
           placeholder="Enter password"
           minLength="1"
           maxLength="10"
@@ -52,6 +81,8 @@ function RegisterModal({
           type="text"
           className="modal__input"
           id="username"
+          value={name.text}
+          onChange={handleName}
           placeholder="Enter your username"
           minLength="1"
           maxLength="10"
