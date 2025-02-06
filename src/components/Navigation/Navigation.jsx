@@ -3,6 +3,8 @@ import logout from "../../assets/logout.svg";
 import logout_black from "../../assets/logout_black.svg";
 import { useNavigate } from "react-router-dom";
 
+import CurrentUserContext from "../../contexts/currentUser";
+import { useContext } from "react";
 
 function Navigation({
   handleLoginClick,
@@ -15,6 +17,9 @@ function Navigation({
   closeActiveModal,
 }) {
   const navigate = useNavigate();
+  const currentUser = useContext(CurrentUserContext);
+
+  console.log("nav", currentUser.name);
 
   const handleSavedArticleButtonClick = () => {
     navigate("/saved-news");
@@ -71,7 +76,7 @@ function Navigation({
                 changeCss ? "nav__username--custom" : ""
               }`}
             >
-              Elise
+              {currentUser.name}
             </span>
             <img
               src={changeCss ? logout_black : logout}

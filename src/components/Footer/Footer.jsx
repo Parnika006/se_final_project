@@ -1,7 +1,6 @@
 import "./Footer.css";
 import github from "../../assets/github.png";
 import linkedin from "../../assets/linkedin.png";
-import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -9,9 +8,9 @@ function Footer() {
       <p className="footer__year"> © 2024 Supersite, Powered by News API </p>
       <div className="footer__content">
         <div className="footer__nav-links">
-          <Link to="/">
+          <a href="/#">
             <button className="footer__link"> Home</button>
-          </Link>
+          </a>
 
           <a
             href="https://tripleten.com/"

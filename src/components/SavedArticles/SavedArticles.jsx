@@ -1,6 +1,8 @@
 import "./SavedArticles.css";
 import Header from "../Header/Header";
 import SavedNews from "../SavedNews/SavedNews";
+import CurrentUserContext from "../../contexts/currentUser";
+import { useContext } from "react";
 
 function SavedArticles({
   isLoggedIn,
@@ -9,6 +11,7 @@ function SavedArticles({
   savedArticles,
   handleDeleteClick,
 }) {
+  const currentUser = useContext(CurrentUserContext);
   const savedArticlesCount = Object.keys(savedArticles).length;
 
   const keywords = Array.from(
@@ -38,7 +41,8 @@ function SavedArticles({
       <div className="saved__articles-main">
         <h2 className="saved__header">Saved Articles</h2>
         <p className="saved__content">
-          Elise, you have <span>{savedArticlesCount} </span>saved articles
+          {currentUser.name}, you have <span>{savedArticlesCount} </span>saved
+          articles
         </p>
         <p className="saved__keyword-heading">
           By keywords:
