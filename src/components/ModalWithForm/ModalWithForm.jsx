@@ -52,5 +52,3 @@ function ModalWithForm({
 }
 
 export default ModalWithForm;
-
-// <div className={`modal ${isOpen ? "modal_opened" : ""}`}>

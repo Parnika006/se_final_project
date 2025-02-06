@@ -2,7 +2,7 @@ import "./Navigation.css";
 import logout from "../../assets/logout.svg";
 import logout_black from "../../assets/logout_black.svg";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 
 function Navigation({
   handleLoginClick,
@@ -12,23 +12,31 @@ function Navigation({
   handleSignOut,
   changeCss,
   menuBarOpen,
+  closeActiveModal,
 }) {
   const navigate = useNavigate();
 
   const handleSavedArticleButtonClick = () => {
-    navigate("/saved-news"); // Navigates to /saved-news
+    navigate("/saved-news");
+    closeActiveModal(); // Navigates to /saved-news
+  };
+
+  const handleHomeButtonClick = () => {
+    navigate("/");
+    closeActiveModal();
   };
 
   return (
     <div className="nav">
       <div className={` ${menuBarOpen ? "nav__menu-bar" : "nav__buttons"}`}>
-        <Link
-          to="/"
+        <button
           className={`nav__home-button
             ${changeCss ? "nav__home-button--saved" : ""}`}
+          type="button"
+          onClick={handleHomeButtonClick}
         >
           Home
-        </Link>
+        </button>
         {!isLoggedIn && (
           <button
             type="text"

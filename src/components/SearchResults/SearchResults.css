@@ -106,7 +106,7 @@
 }
 
 .card__date {
-  font-family: "Source Sans Pro"; /*  not known */
+  font-family: "SourceSansPro-Regular", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;

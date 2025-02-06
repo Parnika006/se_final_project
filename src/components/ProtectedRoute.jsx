@@ -4,7 +4,7 @@ import { isLoggedInContext } from "../contexts/IsLoggedInContext";
 
 function ProtectedRoute({ children }) {
   const isLoggedIn = useContext(isLoggedInContext);
-  console.log("yo are we logged in?", isLoggedIn);
+
   if (!isLoggedIn) {
     // If user isn't logged in, return a Navigate component that sends the user to /login
     return <Navigate to="/" replace />;

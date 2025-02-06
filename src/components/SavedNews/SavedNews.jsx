@@ -1,48 +1,52 @@
 import "./SavedNews.css";
+import { useState } from "react";
+import { formatDate } from "../../utils/formatDate";
 
-function SavedNews() {
+function SavedNews({ savedArticles, handleDeleteClick }) {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   return (
     <div className="saved__news">
       <ul className="card-list">
-        <li key={index} className="card">
-          <img
-            className="card__image"
-            src={article.urlToImage}
-            alt={article.title}
-          />
-          <button
-            className={`card__save-button ${
-              isLoggedIn ? "card__save-button-active" : ""
-            }
-              ${savedArticles[index] ? "card__save-button-marked" : ""}
-            }`}
-            type="button"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => handleSaveClick(index)}
-          >
-            {" "}
-          </button>
-          {!isLoggedIn && hoveredIndex === index && (
-            <button type="text" className="save__button-hover-text">
-              Sign in to save articles
-            </button>
-          )}
-          <div className="card__detail">
-            <p className="card__date">{formatDate(article.publishedAt)}</p>
+        {Object.values(savedArticles).map((article, index) => (
+          <li className="card" key={article.url}>
+            <img
+              className="card__image"
+              src={article.urlToImage}
+              alt={article.title}
+            />
+            <button
+              className="card__delete-button"
+              type="button"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => handleDeleteClick(article.url)}
+            ></button>
 
-            <a
-              href={article.url}
-              className="card__url"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2 className="card__title">{article.title}</h2>
-            </a>
-            <p className="card__description">{article.description}</p>
-            <p className="card__source">{article.source.name}</p>
-          </div>
-        </li>
+            {hoveredIndex === index && (
+              <button type="text" className="delete__button-hover-text">
+                Remove from saved
+              </button>
+            )}
+
+            <p className="card__keyword">{article.searchQuery}</p>
+
+            <div className="card__detail">
+              <p className="card__date">{formatDate(article.publishedAt)}</p>
+
+              <a
+                href={article.url}
+                className="card__url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h2 className="card__title">{article.title}</h2>
+              </a>
+              <p className="card__description">{article.description}</p>
+              <p className="card__source">{article.source.name}</p>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );

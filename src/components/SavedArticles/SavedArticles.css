@@ -31,7 +31,7 @@
   font-weight: 400;
   line-height: 24px;
   color: rgba(26, 27, 34, 1);
-  width: 712px;
+  max-width: 712px;
   margin: 0;
 }
 
@@ -42,4 +42,45 @@
   line-height: 24px;
   color: rgba(26, 27, 34, 1);
   margin: 0;
+}
+
+@media screen and (max-width: 1439px) and (min-width: 768px) {
+  .saved__articles-main {
+    padding: 24px 16px 32px 40px;
+    gap: 16px;
+  }
+
+  .saved__header {
+    font-size: 14px;
+  }
+
+  .saved__content {
+    font-size: 30px;
+    width: 336px;
+    margin: 0;
+    line-height: 34px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .saved__articles-main {
+    padding: 8px 16px 32px;
+    gap: 16px;
+    box-sizing: border-box;
+  }
+
+  .saved__header {
+    font-size: 12px;
+  }
+
+  .saved__content {
+    width: 288px;
+    font-size: 30px;
+    margin: 0 0 34px;
+    line-height: 34px;
+  }
+
+  .saved__keyword-heading {
+    max-width: 288px;
+  }
 }

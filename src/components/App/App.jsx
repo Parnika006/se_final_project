@@ -33,22 +33,12 @@ function App() {
 
   const navigate = useNavigate();
 
-  console.log(isLoading);
-
   const closeActiveModal = () => {
     setActiveModal("");
   };
 
   useEffect(() => {
-    if (localStorage.getItem("jwt")) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, []);
-
-  /*  useEffect(() => {
-    const jwt =getToken();
+    const jwt = getToken();
 
     if (jwt) {
       setIsLoggedIn(true);
@@ -56,20 +46,12 @@ function App() {
       setIsLoggedIn(false);
     }
   }, []);
- */
 
-  /*   useEffect(() => {
-    if (!searchQuery) return;
-
-    setIsLoading(true);
-    getNews(searchQuery, apiKey)
-      .then((data) => {
-        setNewsData(data);
-        console.log(data);
-      })
-      .catch(console.error)
-      .finally(setIsLoading(false));
-  }, [searchQuery]); */
+  useEffect(() => {
+    const storedArticles =
+      JSON.parse(localStorage.getItem("savedArticles")) || [];
+    setSavedArticles(storedArticles);
+  }, []);
 
   const handleSearch = (searchQuery) => {
     if (!searchQuery) return;
@@ -77,6 +59,7 @@ function App() {
     getNews(searchQuery, apiKey)
       .then((data) => {
         setNewsData(data);
+        console.log(data.articles);
       })
       .catch((error) => {
         console.error("Error fetching news:", error);
@@ -86,19 +69,40 @@ function App() {
       });
   };
 
-  const handleSaveClick = (index) => {
+  const handleSaveClick = (articleUrl, article, searchQuery) => {
     if (!isLoggedIn) {
       return;
     }
 
-    setSavedArticles((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index], // Toggle saved state for the specific article
-    }));
+    setSavedArticles((prevState) => {
+      const newState = { ...prevState };
+
+      if (newState[articleUrl]) {
+        delete newState[articleUrl];
+      } else {
+        newState[articleUrl] = { ...article, searchQuery };
+      }
+
+      // Store in localStorage inside setSavedArticles to get the updated state
+      localStorage.setItem("savedArticles", JSON.stringify(newState));
+
+      console.log("Updated Saved Articles:", newState); // Debugging
+
+      return newState;
+    });
+  };
+
+  const handleDeleteClick = (url) => {
+    setSavedArticles((prevState) => {
+      const newState = { ...prevState };
+      delete newState[url]; // Remove the saved article by its URL
+      return newState;
+    });
+    localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
   };
 
   useEffect(() => {
-    if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+    if (!activeModal) return; // remove the listener if there is no active modal
 
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
@@ -183,6 +187,7 @@ function App() {
                     isLoggedIn={isLoggedIn}
                     savedArticles={savedArticles}
                     handleSaveClick={handleSaveClick}
+                    searchQuery={searchQuery}
                   />
                 )}
 
@@ -199,6 +204,8 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   handleSignOut={handleSignOut}
                   handleMenuBarClick={handleMenuBarClick}
+                  savedArticles={savedArticles}
+                  handleDeleteClick={handleDeleteClick}
                 />
               </ProtectedRoute>
             }

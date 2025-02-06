@@ -2,6 +2,7 @@ import "./SearchResults.css";
 import { useState } from "react";
 import not_found from "../../assets/not_found.svg";
 import PreLoader from "../Preloader/Preloader";
+import { formatDate } from "../../utils/formatDate";
 
 function SearchResults({
   newsData,
@@ -11,37 +12,14 @@ function SearchResults({
   isLoggedIn,
   savedArticles,
   handleSaveClick,
+  searchQuery,
 }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  /*   const [savedArticles, setSavedArticles] = useState({});
-
-  const handleSaveClick = (index) => {
-    if (!isLoggedIn) {
-      return;
-    }
-
-    setSavedArticles((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index], // Toggle saved state for the specific article
-    }));
-  }; */
 
   const handleShowMore = () => {
     setVisibleCount((prevCount) =>
       Math.min(prevCount + 3, newsData.articles.length)
     ); // Show 3 more on each click
-  };
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    // Format the date to "Month Day, Year" (e.g., February 3, 2025)
-    const formattedDate = new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }).format(date);
-
-    return formattedDate;
   };
 
   if (isLoading) {
@@ -80,7 +58,7 @@ function SearchResults({
       <h1 className="search__results-heading">Search results</h1>
       <ul className="card-list">
         {newsData.articles.slice(0, visibleCount).map((article, index) => (
-          <li key={index} className="card">
+          <li key={article.url} className="card">
             <img
               className="card__image"
               src={article.urlToImage}
@@ -90,12 +68,12 @@ function SearchResults({
               className={`card__save-button ${
                 isLoggedIn ? "card__save-button-active" : ""
               }
-                ${savedArticles[index] ? "card__save-button-marked" : ""}
+                ${savedArticles[article.url] ? "card__save-button-marked" : ""}
               }`}
               type="button"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => handleSaveClick(index)}
+              onClick={() => handleSaveClick(article.url, article, searchQuery)}
             >
               {" "}
             </button>

@@ -1,5 +1,5 @@
 import "./MenuBar.css";
-import { Link } from "react-router-dom";
+
 import Navigation from "../Navigation/Navigation";
 import { useEffect } from "react";
 
@@ -10,19 +10,19 @@ function MenuBar({
   handleSignOut,
   isLoggedIn,
 }) {
-  function handleResize() {
-    if (window.innerWidth > 767) {
-      closeActiveModal();
-    }
-  }
   useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > 620) {
+        closeActiveModal();
+      }
+    }
     if (isOpen) {
       window.addEventListener("resize", handleResize);
     }
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [isOpen]);
+  }, [isOpen, closeActiveModal]);
 
   return (
     <div className={` menu__bar ${isOpen && "menu__bar_opened"}`}>
@@ -41,6 +41,7 @@ function MenuBar({
           handleSignOut={handleSignOut}
           isOpen={isOpen}
           isLoggedIn={isLoggedIn}
+          closeActiveModal={closeActiveModal}
         />
       </div>
     </div>

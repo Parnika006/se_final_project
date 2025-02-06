@@ -25,6 +25,7 @@
   display: block;
   text-decoration: none;
   position: relative;
+  text-align: left;
 }
 
 .nav__home-button::after {
