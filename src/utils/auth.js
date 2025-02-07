@@ -1,4 +1,4 @@
-import { handleServerResponse } from "./api";
+// import { handleServerResponse } from "./api";
 
 export const register = (email, password, name) => {
   return new Promise((resolve) => {
@@ -22,14 +22,22 @@ export const login = (email, password) => {
   });
 };
 
-export const saveArticle = (article) => {
-  console.log(article);
+export const saveArticle = (articleUrl, article, searchQuery) => {
   // fetch(url, {
   //   headers: {
   //     authorization: `Beaerer ${getToken()}`
   //   }
   // })
   return new Promise((resolve) => {
-    resolve(article);
+    resolve({
+      article: { articleUrl, searchQuery, ...article },
+    });
+  });
+};
+
+export const deleteArticle = (articleUrl) => {
+  console.log(articleUrl);
+  return new Promise((resolve) => {
+    resolve("Deletetion Sucessful");
   });
 };

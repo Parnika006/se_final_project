@@ -1,4 +1,4 @@
-import "./SavedArticles.css";
+import "./SavedArticlesPage.css";
 import Header from "../Header/Header";
 import SavedNews from "../SavedNews/SavedNews";
 import CurrentUserContext from "../../contexts/currentUser";
@@ -10,6 +10,7 @@ function SavedArticles({
   handleMenuBarClick,
   savedArticles,
   handleDeleteClick,
+  closeActiveModal,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const savedArticlesCount = Object.keys(savedArticles).length;
@@ -37,6 +38,7 @@ function SavedArticles({
         handleSignOut={handleSignOut}
         changeCss={true}
         handleMenuBarClick={handleMenuBarClick}
+        closeActiveModal={closeActiveModal}
       />
       <div className="saved__articles-main">
         <h2 className="saved__header">Saved Articles</h2>

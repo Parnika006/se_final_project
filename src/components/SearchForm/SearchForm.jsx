@@ -1,8 +1,13 @@
 import "./SearchForm.css";
 import { useState } from "react";
 
-function SearchForm({ setSearchQuery, setVisibleCount, handleSearch }) {
-  const [inputValue, setInputValue] = useState("");
+function SearchForm({
+  setSearchQuery,
+  setVisibleCount,
+  handleSearch,
+  inputValue,
+  setInputValue,
+}) {
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {

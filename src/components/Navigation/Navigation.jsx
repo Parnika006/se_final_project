@@ -19,8 +19,6 @@ function Navigation({
   const navigate = useNavigate();
   const currentUser = useContext(CurrentUserContext);
 
-  console.log("nav", currentUser.name);
-
   const handleSavedArticleButtonClick = () => {
     navigate("/saved-news");
     closeActiveModal(); // Navigates to /saved-news

@@ -118,7 +118,11 @@
 }
 
 .nav__username-button--custom {
-  border-color: black;
+  border: 1px solid rgba(209, 210, 214, 1);
+}
+
+.nav__username-button--custom:hover {
+  border-color: rgba(26, 27, 34, 1);
 }
 
 .nav__username {
@@ -168,8 +172,20 @@
     bottom: -20px;
   }
 
+  .nav__saved-articles-button {
+    font-size: 16px;
+  }
+
   .nav__saved-articles-button--custom::after {
     bottom: -21px;
+  }
+
+  .nav__username {
+    font-size: 16px;
+  }
+
+  .nav__username-button {
+    width: 100px;
   }
 }
 
@@ -226,6 +242,7 @@
 
   .nav__username-button {
     width: 288px;
+    height: 56px;
     justify-content: center;
   }
 

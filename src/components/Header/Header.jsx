@@ -9,6 +9,7 @@ function Header({
   isLoggedIn,
   handleSignOut,
   changeCss,
+  closeActiveModal,
 }) {
   return (
     <header
@@ -32,6 +33,7 @@ function Header({
         isLoggedIn={isLoggedIn}
         handleSignOut={handleSignOut}
         changeCss={changeCss}
+        closeActiveModal={closeActiveModal}
       />
     </header>
   );

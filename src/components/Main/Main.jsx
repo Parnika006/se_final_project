@@ -11,6 +11,9 @@ function Main({
   setSearchQuery,
   setVisibleCount,
   handleSearch,
+  closeActiveModal,
+  inputValue,
+  setInputValue,
 }) {
   return (
     <div className="search__page">
@@ -21,6 +24,7 @@ function Main({
         isLoggedIn={isLoggedIn}
         handleSignOut={handleSignOut}
         changeCss={false}
+        closeActiveModal={closeActiveModal}
       />
       <div className="search__content">
         <h1 className="search__heading">What&apos;s going on in the world?</h1>
@@ -34,6 +38,8 @@ function Main({
         setSearchQuery={setSearchQuery}
         setVisibleCount={setVisibleCount}
         handleSearch={handleSearch}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
       />
     </div>
   );

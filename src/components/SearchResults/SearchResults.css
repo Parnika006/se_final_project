@@ -5,7 +5,7 @@
 }
 
 .search__results-heading {
-  font-family: "Roboto-regular", sans-serif;
+  font-family: "Roboto-slab-regular", sans-serif;
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
@@ -118,7 +118,7 @@
 }
 
 .card__title {
-  font-family: "Roboto-regular", sans-serif;
+  font-family: "Roboto-slab-regular", sans-serif;
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
