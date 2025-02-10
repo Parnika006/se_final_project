@@ -1,6 +1,6 @@
 // all imports
 
-import { useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
@@ -54,6 +54,11 @@ function App() {
 
     if (jwt) {
       setIsLoggedIn(true);
+      const user = localStorage.getItem("user");
+      const email = localStorage.getItem("email");
+      console.log({ email, user });
+      setCurrentUser({ name: user, email });
+      // eventually we will add the api with the jwt token
     } else {
       setIsLoggedIn(false);
     }
@@ -124,10 +129,12 @@ function App() {
     login(email, password)
       .then((data) => {
         setToken(data.token);
-        //localStorage.setItem("jwt", data.token);
+        // localStorage.setItem("jwt", data.token);
+        localStorage.setItem("user", data.user.name);
+        localStorage.setItem("email", data.user.email);
         setIsLoggedIn(true);
+        console.log(data);
         setCurrentUser(data.user); // Save the user data
-
         closeActiveModal();
       })
       .catch((error) => {
