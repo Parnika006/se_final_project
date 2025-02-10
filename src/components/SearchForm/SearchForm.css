@@ -62,7 +62,7 @@
 
 @media screen and (max-width: 1439px) and (min-width: 768px) {
   .search__form {
-    width: calc(100%-316px);
+    width: calc(100% - 316px);
     margin: 0 auto 48px auto;
     height: 56px;
     width: 452px;
