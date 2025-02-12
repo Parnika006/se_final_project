@@ -8,6 +8,10 @@ News Explorer is a full-stack web application that allows users to search for an
 - 💻 [Frontend Repository](https://github.com/Parnika006/se_final_project)
 - 🛠 [Backend Repository](to be updated)
 
+
+## 🎨 Figma Design  
+- 📐 [Figma Design for News Explorer](https://www.figma.com/design/3ottwMEhlBt95Dbn8dw1NH/Your-Final-Project?node-id=0-1)  
+
 ## 🛠 Tech Stack
 ### Frontend:
 - React.js
