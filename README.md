@@ -38,27 +38,33 @@ News Explorer is a full-stack web application that allows users to search for an
 ### Backend Setup:
 ```sh
 git clone (to be updated)
-cd 
+cd backend-repo
 npm install
 npm start
+```
 
 ### Frontend Setup:
+```sh
 git clone https://github.com/Parnika006/se_final_project
 cd frontend-repo
 npm install
 npm start
+```
 
-📌 Roadmap
+## 📌 Roadmap
 ✅ Implemented JWT authentication
 ✅ Added "Save Article" functionality
 🔜 Deploy backend to a cloud server
 🔜 Improve search filtering
-🤝 Contributing
+
+## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit a pull request.
 
-📩 Contact
+## 📩 Contact
 Feel free to connect with me:
 
-📧 Email: parnikasingh006@gmail.com
-💼 LinkedIn: https://www.linkedin.com/in/parnikasingh006/
-🔗 GitHub: https://github.com/Parnika006
+📧 Email: [parnikasingh006@gmail.com](mailto:parnikasingh006@gmail.com)
+💼 [LinkedIn](https://www.linkedin.com/in/parnikasingh006/)
+🔗 [GitHub](https://github.com/Parnika006)
+
+
