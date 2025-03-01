@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 104px 0 104px;
+  margin: 0;
+  align-items: center;
+  height: 80px;
+  box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.2) inset;
+}
+
+.header__logo {
+  font-family: "Roboto-slab", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  margin: 0;
+  align-self: center;
+  text-decoration: none;
+  outline: none;
+}
+
+.header__saved-article {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px -1px 0px 0px rgba(209, 210, 214, 1) inset;
+}
+
+.header__saved-article-logo {
+  color: rgba(26, 27, 34, 1);
+}
+
+@media screen and (max-width: 1439px) and (min-width: 621px) {
+  .header {
+    height: 66px;
+    padding: 0 40px 0 40px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .header {
+    height: 56px;
+    padding: 0 16px 0 16px;
+  }
+}
