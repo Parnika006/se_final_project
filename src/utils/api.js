@@ -17,28 +17,52 @@ const getUserInfo = (token) => {
   }).then(handleServerResponse);
 };
 
-/* function getArticles() {
-  return fetch(`${baseUrl}/articles`).then(handleServerResponse);
+function getArticles(token) {
+  if (!token) {
+    return Promise.reject("No token found. User might not be logged in.");
+  }
+  return fetch(`${baseUrl}/articles`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
 }
- */
 
-const saveArticle = (articleUrl, article, searchQuery, token) => {
+const saveArticle = (article, searchQuery, token, owner) => {
+  const payload = {
+    source: {
+      name: article?.source?.name ?? "Unknown",
+    },
+    author: article?.author ?? "Unknown",
+    title: article?.title ?? "No Title",
+    description: article?.description ?? "No Description",
+    url: article?.url ?? "No URL",
+    urlToImage: article?.urlToImage ?? "No Image",
+    publishedAt: article?.publishedAt ?? "No Date",
+    content: article?.content ?? "No Content",
+    searchQuery,
+    owner: owner,
+  };
+
   return fetch(`${baseUrl}/articles`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      articleUrl,
-      article,
-      searchQuery,
-    }),
+    body: JSON.stringify({ article: payload, searchQuery }),
   }).then(handleServerResponse);
 };
 
-const deleteArticle = (articleId, token) => {
-  return fetch(`${baseUrl}/articles/${articleId}`, {
+const deleteArticle = (article, token) => {
+  if (!article._id) {
+    console.error("Cannot delete article: Missing _id");
+    return;
+  }
+  return fetch(`${baseUrl}/articles/${article._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -51,6 +75,7 @@ const api = {
   getUserInfo,
   saveArticle,
   deleteArticle,
+  getArticles,
 };
 
 export default api;

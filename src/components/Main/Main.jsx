@@ -16,7 +16,7 @@ function Main({
   setInputValue,
 }) {
   return (
-    <div className="search__page">
+    <main className="search__page">
       <Header
         handleLoginClick={handleLoginClick}
         handleMenuBarClick={handleMenuBarClick}
@@ -41,7 +41,7 @@ function Main({
         inputValue={inputValue}
         setInputValue={setInputValue}
       />
-    </div>
+    </main>
   );
 }
 

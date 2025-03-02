@@ -2,6 +2,7 @@ import "./MenuBar.css";
 
 import Navigation from "../Navigation/Navigation";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function MenuBar({
   isOpen,
@@ -28,7 +29,9 @@ function MenuBar({
     <div className={` menu__bar ${isOpen && "menu__bar_opened"}`}>
       <div className="menu__bar-content">
         <div className="menu__bar-header">
-          <h1 className="menu__bar-heading">News Explorer</h1>
+          <Link to="/" className="menu__bar-heading">
+            News Explorer
+          </Link>
           <button
             type="button"
             className="menu__bar-close-button"

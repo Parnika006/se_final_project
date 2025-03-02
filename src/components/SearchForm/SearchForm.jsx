@@ -35,7 +35,7 @@ function SearchForm({
     <form className="search__form">
       <input
         type="text"
-        className="search__form__input"
+        className="search__input"
         placeholder="Enter Topic"
         required
         value={inputValue}
@@ -45,7 +45,7 @@ function SearchForm({
       <button
         type="submit"
         onClick={handleSubmit}
-        className="search__form__submit-button"
+        className="search__submit-button"
       >
         Search
       </button>

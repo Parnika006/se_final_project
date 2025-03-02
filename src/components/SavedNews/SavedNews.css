@@ -38,6 +38,8 @@
   text-align: center;
   margin: 0 8px 0 0;
   border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .card__keyword {
@@ -72,6 +74,7 @@
   .delete__button-hover-text {
     top: 8px;
     right: 56px;
+    width: 100px;
   }
 
   .card__keyword {
@@ -94,6 +97,7 @@
   .delete__button-hover-text {
     top: 16px;
     right: 64px;
+    width: 120px;
   }
 
   .card__keyword {

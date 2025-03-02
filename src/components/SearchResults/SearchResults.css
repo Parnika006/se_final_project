@@ -66,6 +66,7 @@
   text-align: center;
   margin: 0 8px 0 0;
   border: none;
+  padding: 0;
 }
 
 .card__save-button:hover {
@@ -176,7 +177,7 @@
   margin: 0;
 }
 
-.show__more-button {
+.search__results-show-more-button {
   font-family: "Roboto-medium", sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -193,7 +194,7 @@
   padding: 0;
 }
 
-.show__more-button:hover {
+.search__results-show-more-button:hover {
   background-color: rgba(232, 232, 232, 1);
 }
 
@@ -261,6 +262,7 @@
   .save__button-hover-text {
     top: 8px;
     right: 56px;
+    width: 150px;
   }
 
   .card__image {
@@ -293,7 +295,7 @@
     margin-bottom: 2px;
   }
 
-  .show__more-button {
+  .search__results-show-more-button {
     width: 240px;
     height: 56px;
     margin: 32px auto 0 auto;
@@ -361,7 +363,7 @@
     margin-bottom: 8px;
   }
 
-  .show__more-button {
+  .search__results-show-more-button {
     height: 56px;
     margin: 16px auto 0 auto;
   }

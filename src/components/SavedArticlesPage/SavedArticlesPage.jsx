@@ -32,7 +32,7 @@ function SavedArticles({
   }
 
   return (
-    <div className="saved__articles">
+    <main className="saved__articles">
       <Header
         isLoggedIn={isLoggedIn}
         handleSignOut={handleSignOut}
@@ -41,7 +41,7 @@ function SavedArticles({
         closeActiveModal={closeActiveModal}
       />
       <div className="saved__articles-main">
-        <h2 className="saved__header">Saved Articles</h2>
+        <h1 className="saved__header">Saved Articles</h1>
         <p className="saved__content">
           {currentUser.name}, you have <span>{savedArticlesCount} </span>saved
           articles
@@ -57,7 +57,7 @@ function SavedArticles({
           savedArticles={savedArticles}
         />
       )}
-    </div>
+    </main>
   );
 }
 

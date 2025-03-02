@@ -3,12 +3,12 @@ import about_image from "../../assets/about_image.webp";
 
 function About() {
   return (
-    <div className="about">
+    <section className="about">
       <div className="about__container">
         <img className="about__image" src={about_image} alt="image of author" />
 
         <div className="about__content">
-          <h1 className="about__heading"> About the author</h1>
+          <h3 className="about__heading"> About the author</h3>
           <p className="about__paragraph">
             My name is Parnika Singh, and I am a Full-Stack Software Developer
             with hands-on experience in JavaScript, HTML, CSS, React, Node.js,
@@ -27,7 +27,7 @@ function About() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

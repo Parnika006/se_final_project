@@ -13,6 +13,7 @@ function SearchResults({
   savedArticles,
   handleSaveClick,
   searchQuery,
+  inputValue,
 }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -45,7 +46,7 @@ function SearchResults({
           src={not_found}
           alt="not found image"
         />
-        <h1 className="not__found-heading">Nothing found</h1>
+        <p className="not__found-heading">Nothing found</p>
         <p className="not__found-content">
           Sorry, but nothing matched your search terms.
         </p>
@@ -54,61 +55,63 @@ function SearchResults({
   }
 
   return (
-    <div className="search__results">
-      <h1 className="search__results-heading">Search results</h1>
-      <ul className="card-list">
-        {newsData.articles.slice(0, visibleCount).map((article, index) => (
-          <li key={article.url} className="card">
-            <img
-              className="card__image"
-              src={article.urlToImage}
-              alt={article.title}
-            />
-            <button
-              className={`card__save-button ${
-                isLoggedIn ? "card__save-button-active" : ""
-              }
+    inputValue && (
+      <section className="search__results">
+        <h2 className="search__results-heading">Search results</h2>
+        <ul className="card-list">
+          {newsData.articles.slice(0, visibleCount).map((article, index) => (
+            <li key={article.url} className="card">
+              <img
+                className="card__image"
+                src={article.urlToImage}
+                alt={article.title}
+              />
+              <button
+                className={`card__save-button ${
+                  isLoggedIn ? "card__save-button-active" : ""
+                }
                 ${savedArticles[article.url] ? "card__save-button-marked" : ""}
               }`}
-              type="button"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => handleSaveClick(article.url, article, searchQuery)}
-            >
-              {" "}
-            </button>
-            {!isLoggedIn && hoveredIndex === index && (
-              <button type="text" className="save__button-hover-text">
-                Sign in to save articles
-              </button>
-            )}
-            <div className="card__detail">
-              <p className="card__date">{formatDate(article.publishedAt)}</p>
-
-              <a
-                href={article.url}
-                className="card__url"
-                target="_blank"
-                rel="noopener noreferrer"
+                type="button"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => handleSaveClick(article, searchQuery)}
               >
-                <h2 className="card__title">{article.title}</h2>
-              </a>
-              <p className="card__description">{article.description}</p>
-              <p className="card__source">{article.source.name}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-      {visibleCount < newsData.articles.length && (
-        <button
-          type="button"
-          className="show__more-button"
-          onClick={handleShowMore}
-        >
-          Show more
-        </button>
-      )}
-    </div>
+                {" "}
+              </button>
+              {!isLoggedIn && hoveredIndex === index && (
+                <button type="text" className="save__button-hover-text">
+                  Sign in to save articles
+                </button>
+              )}
+              <div className="card__detail">
+                <p className="card__date">{formatDate(article.publishedAt)}</p>
+
+                <a
+                  href={article.url}
+                  className="card__url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <h4 className="card__title">{article.title}</h4>
+                </a>
+                <p className="card__description">{article.description}</p>
+                <p className="card__source">{article.source.name}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        {visibleCount < newsData.articles.length && (
+          <button
+            type="button"
+            className="search__results-show-more-button"
+            onClick={handleShowMore}
+          >
+            Show more
+          </button>
+        )}
+      </section>
+    )
   );
 }
 

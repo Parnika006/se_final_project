@@ -6,7 +6,7 @@ function SavedNews({ savedArticles, handleDeleteClick }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className="saved__news">
+    <section className="saved__news">
       <ul className="card-list">
         {Object.values(savedArticles).map((article, index) => (
           <li className="card" key={article.url}>
@@ -20,7 +20,9 @@ function SavedNews({ savedArticles, handleDeleteClick }) {
               type="button"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => handleDeleteClick(article.url)}
+              onClick={() => {
+                handleDeleteClick(article);
+              }}
             ></button>
 
             {hoveredIndex === index && (
@@ -40,7 +42,7 @@ function SavedNews({ savedArticles, handleDeleteClick }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <h2 className="card__title">{article.title}</h2>
+                <h4 className="card__title">{article.title}</h4>
               </a>
               <p className="card__description">{article.description}</p>
               <p className="card__source">{article.source.name}</p>
@@ -48,7 +50,7 @@ function SavedNews({ savedArticles, handleDeleteClick }) {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 

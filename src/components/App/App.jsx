@@ -27,7 +27,7 @@ import api from "../../utils/api.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [newsData, setNewsData] = useState({
     status: "",
@@ -39,8 +39,12 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(3); // Initially show 3 articles
-  const [savedArticles, setSavedArticles] = useState({});
-  const [currentUser, setCurrentUser] = useState({ name: "", email: "" });
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [currentUser, setCurrentUser] = useState({
+    name: "",
+    email: "",
+    _id: "",
+  });
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
 
@@ -51,21 +55,14 @@ function App() {
 
     if (jwt) {
       setIsLoggedIn(true);
-      const user = localStorage.getItem("user");
-      const email = localStorage.getItem("email");
-      console.log({ email, user });
-      setCurrentUser({ name: user, email });
-      // eventually we will add the api with the jwt token
     } else {
       setIsLoggedIn(false);
     }
   }, []);
 
-  useEffect(() => {
-    const storedArticles =
-      JSON.parse(localStorage.getItem("savedArticles")) || [];
-    setSavedArticles(storedArticles);
-  }, []);
+  /*   useEffect(() => {
+    const storedArticles = setSavedArticles(storedArticles);
+  }, []); */
 
   useEffect(() => {
     if (!activeModal) return; // remove the listener if there is no active modal
@@ -88,20 +85,41 @@ function App() {
     const jwt = getToken();
 
     if (!jwt) {
+      setIsLoggedIn(false);
+      return;
+    }
+    if (!isLoggedIn) {
       return;
     }
 
     api
       .getUserInfo(jwt)
       .then((data) => {
-        // If the response is successful, log the user in, save their
-        // data to state, and navigate them to /profile.
-        setIsLoggedIn(true);
-        setCurrentUser(data);
-        // navigate("/profile");
+        if (data) {
+          setIsLoggedIn(true);
+          setCurrentUser(data);
+        } else {
+          setIsLoggedIn(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user info:", error);
+        setIsLoggedIn(false);
+      });
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
+    const jwt = getToken();
+    api
+      .getArticles(jwt)
+      .then((data) => {
+        setSavedArticles(data);
       })
       .catch(console.error);
-  }, [navigate]);
+  }, [isLoggedIn]);
 
   // all functions
 
@@ -146,10 +164,10 @@ function App() {
       .then((data) => {
         if (data.token) {
           setToken(data.token);
-          /*  localStorage.setItem("user", data.user.name);
-        localStorage.setItem("email", data.user.email); */
+
           setIsLoggedIn(true);
           setCurrentUser(data.user); // Save the user data
+
           closeActiveModal();
         }
       })
@@ -164,6 +182,7 @@ function App() {
     navigate("/");
     removeToken();
     setCurrentUser({ name: "", email: "" });
+    setInputValue("");
   };
 
   const handleSearch = (searchQuery) => {
@@ -172,7 +191,6 @@ function App() {
     getNews(searchQuery, apiKey)
       .then((data) => {
         setNewsData(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching news:", error);
@@ -208,7 +226,7 @@ function App() {
 
  */
 
-  const handleSaveClick = (articleUrl, article, searchQuery) => {
+  /*  const handleSaveClick = (articleUrl, article, searchQuery) => {
     if (!isLoggedIn) {
       return;
     }
@@ -217,10 +235,65 @@ function App() {
     api
       .saveArticle(articleUrl, article, searchQuery, token)
       .then((newArticle) => {
-        setSavedArticles([newArticle, ...article], searchQuery);
-        closeActiveModal();
+        setSavedArticles([newArticle.data, ...savedArticles], searchQuery);
       })
       .catch((err) => console.error(err));
+  }; */
+
+  /*   const handleSaveClick = (articleUrl, article, searchQuery) => {
+    if (!isLoggedIn) {
+      return;
+    }
+    const token = getToken();
+    api
+      .saveArticle(articleUrl, article, searchQuery, token)
+      .then((newArticle) => {
+        setSavedArticles((prevState) => {
+          const newState = { ...prevState };
+          if (newState[newArticle.url]) {
+            delete newState[newArticle.url];
+          } else {
+            newState[newArticle.url] = { ...article, searchQuery };
+          }
+          return newState;
+        });
+      })
+      .catch((err) => console.error(err));
+  }; */
+
+  const handleSaveClick = (article, searchQuery) => {
+    if (!isLoggedIn) {
+      return;
+    }
+    const token = getToken();
+
+    api
+      .saveArticle(article, searchQuery, token, currentUser._id)
+      .then((newArticle) => {
+        setSavedArticles((prevState) => {
+          const newState = { ...prevState };
+
+          if (newState[newArticle.data.url]) {
+            delete newState[newArticle.url];
+          } else {
+            newState[newArticle.data.url] = {
+              ...article,
+              searchQuery,
+              _id: newArticle.data._id,
+              // owner: currentUser._id,
+            };
+          }
+
+          return newState;
+        });
+
+        // Ensure localStorage is updated with the latest saved articles
+        setSavedArticles((updatedState) => {
+          localStorage.setItem("savedArticles", JSON.stringify(updatedState));
+          return updatedState;
+        });
+      })
+      .catch((err) => console.error("Error saving article:", err));
   };
 
   /* 
@@ -237,13 +310,30 @@ function App() {
       .catch((err) => console.error(err));
   }; */
 
-  const handleDeleteClick = (article) => {
+  /* const handleDeleteClick = (article) => {
     const token = getToken();
+  
     api
-      .deleteArticle(article._id, token)
+      .deleteArticle(article, token)
       .then(() => {
+       
         setSavedArticles(
           savedArticles.filter((card) => card._id !== article._id)
+        );
+      })
+      .catch((err) => console.error(err));
+  }; */
+
+  const handleDeleteClick = (article) => {
+    const token = getToken();
+
+    api
+      .deleteArticle(article, token)
+      .then(() => {
+        setSavedArticles((prevSavedArticles) =>
+          Array.isArray(prevSavedArticles)
+            ? prevSavedArticles.filter((card) => card._id !== article._id)
+            : []
         );
       })
       .catch((err) => console.error(err));
@@ -284,6 +374,7 @@ function App() {
                       savedArticles={savedArticles}
                       handleSaveClick={handleSaveClick}
                       searchQuery={searchQuery}
+                      inputValue={inputValue}
                     />
                   )}
 
