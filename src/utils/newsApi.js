@@ -1,5 +1,10 @@
 import { handleServerResponse } from "./api";
 
+const newsApiBaseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://nomoreparties.co/news/v2/everything"
+    : "https://newsapi.org/v2/everything";
+
 const getFormattedDate = (daysAgo = 0) => {
   const date = new Date();
   date.setDate(date.getDate() - daysAgo); // Subtract days
@@ -11,6 +16,6 @@ export const getNews = (searchQuery, apiKey) => {
   const sevenDaysAgo = getFormattedDate(7); // 7 days ago
 
   return fetch(
-    `https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=${apiKey}&from=${sevenDaysAgo}&to=${currentDate}&pageSize=100`
+    `${newsApiBaseUrl}?q=${searchQuery}&apiKey=${apiKey}&from=${sevenDaysAgo}&to=${currentDate}&pageSize=100`
   ).then(handleServerResponse);
 };
