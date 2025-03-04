@@ -6,7 +6,7 @@ News Explorer is a full-stack web application that allows users to search for an
 
 ## 🔗 Live Demo & Repository
 
-- 🚀 [Live App](https://parnika006.github.io/se_final_project/)
+- 🚀 [Live App](https://www.newex.crabdance.com/)
 - 💻 [Frontend Repository](https://github.com/Parnika006/se_final_project)
 - 🛠 [Backend Repository](to be updated)
 
